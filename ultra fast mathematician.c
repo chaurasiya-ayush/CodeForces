@@ -33,3 +33,4 @@ int main(){
     
 }
 // big int ka concept nhi atta isliye solve nhi hua 
+// bevakufi kr di optimized code ye tha hi nhi
