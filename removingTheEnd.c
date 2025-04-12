@@ -13,17 +13,20 @@ int removeEnd(){
     int arr[n];
     int preSum[n];
     for(int i=0;i<n;i++){
+        preSum[i] = 0;
+    }
+    for(int i=0;i<n;i++){
         scanf("%d",&arr[i]);
-        preSum[i+1] =preSum[i];
-        if(arr[i]>0)  preSum[i+1] = preSum[i] + arr[i];
+        if(arr[i]>0)  preSum[i] += arr[i];
+        printf("%d ",preSum[i]);
     } 
-        long long int ans = preSum[n] ;
-        int suf =0;
-        for(int i = n-1;i>=0;i--){
-            if(arr[i]<0) suf += -arr[i];
-            if(preSum[i]+suf>ans) ans = preSum[i] + suf;
+        // long long int ans = preSum[n] ;
+        // int suf =0;
+        // for(int i = n-1;i>=0;i--){
+        //     if(arr[i]<0) suf += -arr[i];
+        //     if(preSum[i]+suf>ans) ans = preSum[i] + suf;
             
-        }
-        printf("%lld",ans);
+        // }
+        // printf("%lld",ans);
     return 0;
 }

@@ -1,58 +1,45 @@
 #include <stdio.h>
+#include <string.h>
 
-int main()
-{
-   char direction[2];
-   scanf("%s",direction);
-   char str[1000];
-   scanf("%s",str);
-   char row1[] = "qwertyuiop";
-   char row2[] = "asdfghjkl;";
-   char row3[] = "zxcvbnm,./";
-  if(str[0]=='q' || str[]=='w' || str[]=='e' || str[]=='r' || str[]=='t' || str[]=='y' || str[]=='u' || str[]=='i' || str[]=='o'|| str[]=='p'){
-      // checkin row 1;
-      for(int i=0;i<strlen(row1);i++){
-          if(row1[i]== str[0]){
-              index = i;
-              break;
-          }
-         
-      }
-      if(direction[0]=='R'){
-              printf("%c",row1[index+1]);
-          }
-          else printf("%d",row1[index-1]);
-  }
-  else if(str[0]=='a' || str[]=='s' || str[]=='d' || str[]=='f' || str[]=='g' || str[]=='h' || str[]=='j' || str[]=='k' || str[]=='l'|| str[]==';'){
-      // checkin row 2;
-       for(int i=0;i<strlen(row2);i++){
-          if(row2[i]== str[0]){
-              index = i;
-              break;
-          }
-         
-      }
-      if(direction[0]=='R'){
-              printf("%c",row2[index+1]);
-          }
-          else printf("%d",row2[index-1]);
-  }
-  else if(str[0]=='z' || str[]=='x' || str[]=='c' || str[]=='v' || str[]=='b' || str[]=='n' || str[]=='m' || str[]==',' || str[]=='.'|| str[]=='/'){
-      // checkin row 3;
-       for(int i=0;i<strlen(row3);i++){
-          if(row3[i]== str[0]){
-              index = i;
-              break;
-          }
-         
-      }
-      if(direction[0]=='R'){
-              printf("%c",row3[index+1]);
-          }
-          else printf("%d",row3[index-1]);
-  }
+int main() {
+    char direction;
+    scanf(" %c", &direction);
 
+    char str[1001];
+    scanf("%s", str);
 
+    char row1[] = "qwertyuiop";
+    char row2[] = "asdfghjkl;";
+    char row3[] = "zxcvbnm,./";
 
+    for (int j = 0; j < strlen(str); j++) {
+        char ch = str[j];
+        char *row = NULL;
+        int index = -1;
+        if (strchr(row1, ch)) {
+            row = row1;
+        } else if (strchr(row2, ch)) {
+            row = row2;
+        } else if (strchr(row3, ch)) {
+            row = row3;
+        }
+
+        // Find the index of the character in that row
+        for (int i = 0; i < strlen(row); i++) {
+            if (row[i] == ch) {
+                index = i;
+                break;
+            }
+        }
+
+        // Shift character according to direction
+        if (direction == 'R') {
+            printf("%c", row[index - 1]);  // shift left on keyboard
+        } else {
+            printf("%c", row[index + 1]);  // shift right on keyboard
+        }
+    }
+
+    printf("\n");
     return 0;
 }
