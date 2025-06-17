@@ -13,4 +13,4 @@ int main(){
         }
         cout<<x<<" "<<y<<endl;
     }
-}
+}A
