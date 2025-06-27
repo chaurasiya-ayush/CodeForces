@@ -16,7 +16,7 @@ public class CopyOf
 	    System.out.print(dup2[i]+" ");
 	}
 	}
-}
+}				
 class ArraysDemo{
     
     public static int[] copyOfRange(int[] arr,int from,int to){
