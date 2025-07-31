@@ -17,7 +17,7 @@ int checkSegment(vector<int>&arr,long long x){
             p2++;
         }
     }
-    if(maxVal == INT_MAX) return 0;
+    if(maxVal == INT_MIN) return 0;
     return maxVal;
 }
 int main(){
