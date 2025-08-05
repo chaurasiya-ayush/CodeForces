@@ -1,65 +1,41 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <cstring> // for memset
-
+#include<bits/stdc++.h>
 using namespace std;
-
-const int N = 2e5 + 5;
-
-int t, n;
-int a[N], b[N], countA[N * 2], countB[N * 2], freq[N];
-
-void Solve() {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-
-    cin >> t;
-    while (t--) {
-        cin >> n;
-
-        // Reset arrays
-        for (int i = 1; i <= n; i++) freq[i] = 0;
-        for (int i = 1; i <= 2 * n; i++) countA[i] = countB[i] = 0;
-
-        // Input arrays
-        for (int i = 1; i <= n; i++) cin >> a[i];
-        for (int i = 1; i <= n; i++) cin >> b[i];
-
-        // Process array a[]
-        for (int i = 1; i <= n; i++) {
-            if (a[i] == a[i - 1]) {
-                freq[i] = freq[i - 1] + 1;
-            } else {
-                freq[i] = 1;
-            }
-            countA[a[i]] = max(countA[a[i]], freq[i]);
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        vector<int>a(n);
+        vector<int>b(n);
+        unordered_map<int,int>freq;
+        unordered_map<int,int>freq2;
+        for(int &elem:a) cin>>elem;
+        for(int &elem:b) cin>>elem;
+        for(int i=0;i<n;i++){
+            int index = i;
+            int cnt =1;
+           while(i<n-1 && a[i]==a[i+1]){
+               cnt++;i++;
+           }
+           freq[a[index]]=max(cnt,freq[a[index]]);
         }
-
-        // Reset freq for b[]
-        memset(freq, 0, sizeof(int) * (n + 1));
-
-        // Process array b[]
-        for (int i = 1; i <= n; i++) {
-            if (b[i] == b[i - 1]) {
-                freq[i] = freq[i - 1] + 1;
-            } else {
-                freq[i] = 1;
-            }
-            countB[b[i]] = max(countB[b[i]], freq[i]);
+        for(int i=0;i<n;i++){
+            int index = i;
+            int cnt =1;
+           while(i<n-1 && b[i]==b[i+1]){
+               cnt++;i++;
+           }
+           freq2[b[index]]=max(cnt,freq2[b[index]]);
         }
-
-        // Final answer
-        int ans = 0;
-        for (int i = 1; i <= 2 * n; i++) {
-            ans = max(ans, countA[i] + countB[i]);
+        int maxAns = INT_MIN;
+        
+        for(int i=0;i<n;i++){
+            maxAns = max(freq[a[i]] + freq2[a[i]],maxAns);
         }
-
-        cout << ans << '\n';
+        for(int i=0;i<n;i++){
+            maxAns = max(freq[b[i]] + freq2[b[i]],maxAns);
+        }
+        cout<<maxAns<<endl;
     }
-}
-
-int main() {
-    Solve();
-    return 0;
 }
