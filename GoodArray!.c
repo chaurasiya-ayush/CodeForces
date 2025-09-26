@@ -9,6 +9,10 @@ int checkNum(int arr[],int x){
     printf("%d\n",count);
     
 }
+
+
+
+
 int main(){
     int n;
     scanf("%d",&n);
