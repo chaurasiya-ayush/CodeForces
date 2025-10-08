@@ -1,44 +1,49 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-
-int main() {
+int main(){
     int t;
-    cin >> t;
-    while (t--) {
-        int n, k;
-        cin >> n >> k;
-        string s;
-        cin >> s;
-
-        if (n == 1) {
-            cout << "-\n";
-            continue;
-        }
-
-        int minTop = 0, maxTop = 0;
-        int minBot = 0, maxBot = 0;
-
-        for (char c : s) {
-            if (c == '0') {            
-                minTop++;
-                maxTop++;
-            } else if (c == '1') {     
-                minBot++;
-                maxBot++;
-            } else {                   
-                maxTop++;
-                maxBot++;
-            }
-        }
-
-        string result(n, '+');
-        for (int i = 1; i <= n; i++) {
-            if (i <= minTop || i > n - minBot)
-                result[i - 1] = '-';
-            else if (i <= maxTop || i > n - maxBot)
-                result[i - 1] = '?';
-        }
-
-        cout << result << '\n';
+    cin>>t;
+    while(t--){
+    int n,k;
+      cin>>n>>k;
+      string str;
+      cin>>str;
+    //   int i=0;int j=n-1;
+      vector<char>arr(n,'+');
+      int i=0;
+      int j = n-1;
+      int cnt =0;
+      for(int l=0;l<k;l++){
+          if(str[l]=='0'){
+              arr[i]='-';
+              i++;
+          }else if(str[l] == '1'){
+              arr[j] = '-';
+              j--;
+          }else{
+              cnt++;
+          }
+          
+      }
+      while(cnt >0 ){
+          if(i==j){
+              if(arr[i-1]=='?' && arr[j+1]=='?'){
+                  arr[i] = '?';
+              }else{
+                  arr[i] = '-';
+              }
+          }
+          else{
+              arr[i] = '?';
+              arr[j] = '?';
+          }
+          cnt--;
+          i++;
+          j--;
+      }
+      for(auto elem:arr)cout<<elem;
+      cout<<endl;
+       
     }
+    
 }
