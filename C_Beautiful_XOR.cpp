@@ -1,67 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-#define ll long long
-const ll mod = 1000000007;
-#define srt(v) sort(v.begin(), v.end());
-#define srt_Dec(v) sort(v.begin(), v.end(), greater<int>());
-
-int solve1()
-{
-
-    int a, b;
-    cin >> a >> b;
-
-    if (__lg(b) > __lg(a))
-    {
-        cout << -1 << "\n";
-    }
-    else if (a == b)
-        cout << 0 << "\n";
-
-    else if ((__lg(b) == __lg(a)) && (b > a))
-    {
-        cout << 1 << "\n";
-        cout << (a ^ b) << "\n";
-    }
-
-    else if (a > b)
-    {
-        if (__lg(a) > __lg(b))
-        {
-            if ((a & (1 << __lg(b))) == 0)
-            {
-                a = a ^ (1 << __lg(b));
-                cout << 2 << "\n";
-                cout << (1 << __lg(b))<<" ";
-                cout << (a ^ b) << "\n";
-            }
-            else
-            {
-                cout << 1 << "\n";
-                cout << (a ^ b) << "\n";
-            }
-        }
-        else
-        {
-            cout << 1 << "\n";
-            cout << (a ^ b) << "\n";
-        }
-    }
-
-    return 0;
-}
-int main()
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-
+int main() {
     int t;
-    cin >> t;
-    while (t--)
-    {
-        solve1();
+    cin>>t;
+    while(t--){
+        int a,b;
+        cin>>a>>b;
+        bool flag=true;
+        std::vector<int> v;
+        for (int i=31;i>=0;i--) {
+            if((a>>i)&1){
+                break;
+            }
+            if((b>>i)&1){
+                flag=false;
+                break;
+            }
+        }
+        if(flag==true){
+            for(int i=0;i<32;i++){
+                if((((a>>i)&1)==1) && (((b>>i)&1)==0)){
+                    v.push_back(1<<i);
+                }
+                if((((a>>i)&1)==0) && (((b>>i)&1)==1)){
+                    v.push_back(1<<i);
+                }
+                
+            }
+            cout<<v.size()<<endl;
+            for(int i=0;i<v.size();i++) cout<<v[i]<<" ";
+            if(v.size()!=0)cout<<endl;
+        }
+        else cout<<-1<<endl;
     }
-    return 0;
 }
