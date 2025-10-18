@@ -1,37 +1,24 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
+int main(){
     int t;
-    cin >> t;
-    while (t--) {
-        long long a, b;
-        cin >> a >> b;
-
-        if (a == b) {
-            // Already equal, no operations needed
-            cout << 0 << "\n";
-        } else {
-            long long x = a ^ b;
-            if (x <= a) {
-                // One operation is enough
-                cout << 1 << "\n";
-                cout << x << "\n";
-            } else {
-                if (a == 0) {
-                    // Impossible, since x > a
-                    cout << -1 << "\n";
-                } else {
-                    // Two operations trick: a -> 0 -> b
-                    cout << 2 << "\n";
-                    cout << a << " " << (a ^ b) << "\n";
-                }
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        string str;
+        cin>>str;
+        int cnt =0;
+        for(int i=0;i<n;i++){
+            if(str[i] == '1'){
+                cnt++;
+            }
+        }
+        cout<<cnt<<endl;
+        for(int i=0;i<n;i++){
+            if(str[i]=='1'){
+                cout<<i+1<<" ";
             }
         }
     }
-
-    return 0;
 }
