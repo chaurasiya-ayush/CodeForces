@@ -5,6 +5,8 @@ class A_Dubstep {
         String s = scan.next();
         s = s.replace("WUB"," ");
         s = s.trim();
+
+        
         System.out.println(s);
     }
 }
