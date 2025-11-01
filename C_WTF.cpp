@@ -12,4 +12,4 @@ int main()
 		maxx=max(maxx,b/i);
 	}
 	cout<<maxx;
-}
+// }
