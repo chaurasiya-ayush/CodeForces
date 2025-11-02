@@ -15,7 +15,7 @@ int main(){
       int cnt =0;
       for(int l=0;l<k;l++){
           if(str[l]=='0'){
-              arr[i]='-';
+arr[i]='-';
               i++;
           }else if(str[l] == '1'){
               arr[j] = '-';
