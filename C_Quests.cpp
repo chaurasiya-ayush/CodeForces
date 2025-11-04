@@ -12,10 +12,6 @@ using namespace std;
 #define fastio ios::sync_with_stdio(false); cin.tie(nullptr);
 
 void solve(){
-    // int n;
-    // scan(n);
-    // vector<int> arr(n);
-    // loop(i, n) scan(arr[i]);
     int n,k;
     scan(n); scan(k);
     vector<int>a(n);
