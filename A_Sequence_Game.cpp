@@ -5,7 +5,7 @@ using namespace std;
 #define ll long long
 #define scan(x) cin >> x
 #define print(x) cout << x << "\n"
-#define loop(i, n) for(int i = 0; i < (n); ++i)
+#define loop(i, n) for(int i = 0; i < (n); ++i) 
 #define all(x) (x).begin(), (x).end()
 #define yes cout << "YES\n"
 #define no cout << "NO\n"
@@ -35,3 +35,5 @@ int32_t main(){
     }
     return 0;
 }
+
+
