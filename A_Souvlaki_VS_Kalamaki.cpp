@@ -18,9 +18,15 @@ void solve(){
     loop(i, n) scan(arr[i]);
 
     //  Write your logic here
-    
-}
+  sort(all(arr));
+  bool isBool = true;
+  for(int i=1;i<n-1;i+=2){
+    if(arr[i] != arr[i+1]){  isBool = false;}
+  }
+  if(isBool) yes;
+  else no;
 
+}
 int32_t main(){
     fastio;
     int t = 1;

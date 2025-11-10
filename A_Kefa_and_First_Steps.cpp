@@ -1,4 +1,4 @@
-// 🌟 Code by Ayush Chaurasiya — Eat 💻 Sleep 😴 Code ⚡ Repeat 💪
+
 #include <bits/stdc++.h>
 #define ll long long
 #define loop(i, n) for (int i = 0; i < (int)(n); ++i)

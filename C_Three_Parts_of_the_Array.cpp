@@ -23,7 +23,7 @@ void solve(){
     long long preSum = arr[0];
     long long sufSum = arr[n-1];
     long long  ans= 0;
-    while(p1 <= p2){
+    while(p1 < p2){
         if(preSum == sufSum){
             p1++;
             p2--;
