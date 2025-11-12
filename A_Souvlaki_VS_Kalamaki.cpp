@@ -10,9 +10,6 @@ using namespace std;
 #define yes cout << "YES\n"
 #define no cout << "NO\n"
 #define fastio ios::sync_with_stdio(false); cin.tie(nullptr);
-
-
-
 void solve(){
     int n;
     scan(n);
