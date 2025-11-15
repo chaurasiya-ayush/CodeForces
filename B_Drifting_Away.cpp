@@ -5,64 +5,53 @@ using namespace std;
 #define ll long long
 #define scan(x) cin >> x
 #define print(x) cout << x << "\n"
-#define loop(i, n) for(int i = 0; i < (n); ++i)
+#define loop(i,k, n) for(int i = k; i < (n); ++i)
 #define all(x) (x).begin(), (x).end()
 #define yes cout << "YES\n"
 #define no cout << "NO\n"
 #define fastio ios::sync_with_stdio(false); cin.tie(nullptr);
-
-int solve(){
-    string str;
-    scan(str);
-    int n = str.size();
-    int index1=0;
-    int index2=0;
-      int countLeft =0;
-     int countRight =0;
-    if(n==1) { return 1 ;}
-    int countAst =0;
-    loop(i,n){
-        if(str[i]=='*'){
-            countAst++;
+int sum(string s){
+    int ans =1,cnt=1;
+    int n = s.size();
+    loop(i,0,n-1){
+        if(s[i]==s[i+1]) cnt++;
+        else cnt =1;
+        ans = max(ans,cnt);
+    }
+    return ans;
+}
+void solve(){
+    string s;
+    scan(s);
+    int n = s.size();
+    bool isBool = false;
+    loop(i,0,n-1){
+        string cases = "";
+        cases += s[i];
+        cases += s[i+1];
+        if(cases == "><" || cases=="*<" || cases == ">*" || cases == "**"){
+            isBool = true;
         }
     }
-    if(countAst >0) return -1;
-    for(int i=0;i<n;i++){
-        if(str[i]=='>'){
-            index1 = i;
-            break;
-        }
-    } 
-    for(int i=n-1;i>=0;i--){
-        if(str[i]=='<'){
-            index2 = i;
-            break;
-        }
-    }   
-    if(index1 < index2){
-        return -1;
+    if(isBool){
+        print(-1);
+        return ;
     }
-    if(index1 ==0 && index2 ==0){
-        return -1;
-    }
-    for(int i=0;i<n;i++){
-        if(str[i]=='<'){
-            countLeft++;
-        }else{
-            break;
+    string s1 = s;
+    int ans =0;
+    loop(i,0,n){
+        if(s1[i] == '*'){
+            s1[i] = '<';
         }
     }
-    for(int i=n-1;i>=0;i--){
-        if(str[i]=='>'){
-            countRight++;
-        }else{
-            break;
+    ans = sum(s1);
+     s1 = s;
+    loop(i,0,n){
+        if(s1[i] == '*'){
+            s1[i] = '>';
         }
     }
-
-    return max(countLeft,countRight);
-   
-
+    print(max(ans,sum(s1)));
     
 }
 
@@ -71,7 +60,7 @@ int32_t main(){
     int t = 1;
     scan(t);
     while(t--){
-        print(solve());
+        solve();
     }
     return 0;
 }
