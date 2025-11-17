@@ -1,4 +1,4 @@
-// 🌟 Code by Ayush Chaurasiya — Eat 💻 Sleep 😴 Code ⚡ Repeat 💪
+//  Code by Ayush Chaurasiya — Keep Hustling 
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -7,35 +7,33 @@ using namespace std;
 #define print(x) cout << x << "\n"
 #define loop(i, n) for(int i = 0; i < (n); ++i)
 #define all(x) (x).begin(), (x).end()
+#define yes cout << "YES\n"
+#define no cout << "NO\n"
+#define fastio ios::sync_with_stdio(false); cin.tie(nullptr);
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+void solve(){
+    int n;
+    scan(n);
+    vector<int> v(n);
+    loop(i, n) scan(v[i]);
 
-    int t; scan(t);
-    while(t--) {
-        int n; scan(n);
-        vector<ll> a(n);
+        long long sum = 0;
+        for (int i = 0; i < n; i++)
+            sum += max(v[i], v[(i + 1) % n]);
+ 
+        int mx = 0;
+        for (int i = 0; i < n; i++)
+            mx = max(mx, v[i]);
+ 
+        cout << sum - mx << "\n";
+}
 
-        ll sum = 0, mn = LLONG_MAX;
-
-        loop(i, n) {
-            scan(a[i]);
-            sum += a[i];
-            mn = min(mn, a[i]);
-        }
-
-        // Count segments of minimum
-        int seg = 0;
-        loop(i, n) {
-            if(a[i] == mn && a[(i-1+n)%n] != mn)
-                seg++;
-        }
-
-        ll ans = sum + (seg - 1) * mn;
-
-        print(ans);
+int32_t main(){
+    fastio;
+    int t = 1;
+    scan(t);
+    while(t--){
+        solve();
     }
-
     return 0;
 }
